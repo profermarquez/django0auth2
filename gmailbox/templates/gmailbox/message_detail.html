@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mensaje</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 20px; }
+    .meta { color:#666; font-size: 12px; }
+    .card { padding: 16px; border: 1px solid #eee; border-radius: 8px; }
+    .body { margin-top: 12px; }
+    pre { white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <a href="/inbox/">← Volver al Inbox</a>
+  <h1>Mensaje</h1>
+
+  <div class="card">
+    <div class="meta"><strong>From:</strong> {{ headers.From }}</div>
+    <div class="meta"><strong>To:</strong> {{ headers.To }}</div>
+    <div class="meta"><strong>Date:</strong> {{ headers.Date }}</div>
+    <div class="meta"><strong>Subject:</strong> {{ headers.Subject }}</div>
+    <div class="body">
+      {% if body_html %}
+        <div>{{ body_html|safe }}</div>
+      {% elif body_text %}
+        <pre>{{ body_text }}</pre>
+      {% else %}
+        <em>Sin cuerpo legible.</em>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Inbox (Gmail)</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 20px; }
+    .msg { padding: 10px; border-bottom: 1px solid #eee; }
+    .from { font-weight: 600; }
+    .meta { color: #666; font-size: 12px; }
+    .row { display: grid; grid-template-columns: 2fr 5fr 2fr 1fr; gap: 10px; align-items: center; }
+    .toolbar { margin-bottom: 12px; }
+    input[type=text]{ padding: 6px; width: 320px; }
+    a { text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>Inbox</h1>
+
+  {% if needs_login %}
+    <p>Para ver tu bandeja de entrada, iniciá sesión con Google.</p>
+    <p><a href="{% url 'google_login' %}">Conectar Gmail</a></p>
+  {% else %}
+    <div class="toolbar">
+  <form method="get" action="{% url 'inbox' %}">
+    <input type="text" name="q" placeholder="Buscar (ej: is:unread newer_than:7d)" value="{{ query|default:'' }}" />
+    <button type="submit">Buscar</button>
+    <a href="{% url 'inbox' %}">Limpiar</a>
+    <!-- ⬇⬇ NUEVO -->
+    <a href="{% url 'export_csv' %}{% if query %}?q={{ query|urlencode }}{% endif %}">Exportar CSV</a>
+  </form>
+</div>
+    <div class="row" style="font-weight:700; border-bottom:2px solid #000; padding-bottom:6px;">
+      <div>De</div><div>Asunto</div><div>Fecha</div><div></div>
+    </div>
+    {% if messages %}
+      {% for m in messages %}
+        <div class="msg row">
+          <div class="from">{{ m.from }}</div>
+          <div class="subject">{{ m.subject }}</div>
+          <div class="meta">{{ m.date }}</div>
+          <div><a href="{% url 'message_detail' m.id %}">Abrir</a></div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No hay mensajes para mostrar.</p>
+    {% endif %}
+  {% endif %}
+</body>
+</html>
