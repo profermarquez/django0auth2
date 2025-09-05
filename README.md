@@ -1,3 +1,5 @@
+# Habilitar la api de Google cloud
+
 Buscar en google "Google Cloud Console gmail api", 
 https://console.cloud.google.com/auth/
 aceptar las condiciones y habilidar la funcion de Gmail API
@@ -45,4 +47,8 @@ python manage.py runserver
 
 # Correr las migraciones y ejecutar el proyecto
 python manage.py migrate
+
+
 python manage.py runserver
+
+# en el proyecto falta el .env y el credentials.json que se descarga del sitio de Google cloud y se lo renombra con ese nombre
