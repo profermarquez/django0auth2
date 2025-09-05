@@ -11,7 +11,7 @@ Información de la app
         TestDjangoApp
 El nombre de la aplicación que solicita el consentimiento
 Correo electrónico de asistencia del usuario
-            sebastian.marquez@esim.edu.ar
+            correoz@gmail.com
 
 Public: Usuarios Externos
 Informacion de contacto: corre@gmail.com
@@ -52,3 +52,4 @@ python manage.py migrate
 python manage.py runserver
 
 # en el proyecto falta el .env y el credentials.json que se descarga del sitio de Google cloud y se lo renombra con ese nombre
+
