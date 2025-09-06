@@ -53,3 +53,9 @@ python manage.py runserver
 
 # en el proyecto falta el .env y el credentials.json que se descarga del sitio de Google cloud y se lo renombra con ese nombre
 
+el .env tiene: 
+GOOGLE_REDIRECT_URI=http://localhost:8000/google/callback
+GMAIL_SCOPES=https://www.googleapis.com/auth/gmail.readonly
+
+
+
