@@ -57,7 +57,10 @@ python manage.py runserver
 
 
 GOOGLE_REDIRECT_URI=http://localhost:8000/google/callback
+
+
 GMAIL_SCOPES=https://www.googleapis.com/auth/gmail.readonly
+
 
 
 
